@@ -5,7 +5,6 @@ import socket, sys, re
 import params
 from framedSock import FramedStreamSock
 from threading import Thread
-import time
 
 switchesVarDefaults = (
     (('-s', '--server'), 'server', "localhost:50001"),
@@ -62,7 +61,6 @@ class ClientThread(Thread):
 
        fs = FramedStreamSock(s, debug=debug)
 
-
        print("sending hello world")
        fs.sendmsg(b"hello world")
        print("received:", fs.receivemsg())
@@ -72,4 +70,3 @@ class ClientThread(Thread):
 
 for i in range(100):
     ClientThread(serverHost, serverPort, debug)
-
